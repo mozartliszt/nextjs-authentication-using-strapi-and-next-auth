@@ -8,7 +8,17 @@ const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  database: process.env.NEXT_PUBLIC_DATABASE_URL,
+  database: {
+    type: "postgres",
+    host: process.env.DATABASE_HOST,
+    port: 5432,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
   session: {
     jwt: true,
   },
